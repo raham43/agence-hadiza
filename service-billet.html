@@ -1,0 +1,457 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flight Tickets — Agence Hadiza A. Internationale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dark:#9A7535;
+  --green:#0A1F0A;--green2:#0D260D;--green3:#122B12;
+  --white:#FFFFFF;--off-white:#F5F7F5;--gray:#6B7B6B;--gray-light:#E0E5E0;
+  --text:#1A2A1A;--radius:6px;--radius-lg:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;height:76px;background:#fff;
+  display:flex;align-items:center;justify-content:space-between;padding:0 5%;
+  box-shadow:0 2px 20px rgba(0,0,0,0.08);border-bottom:2px solid rgba(201,168,76,0.25)}
+.nav-logo img{height:58px;width:auto;object-fit:contain}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--green);text-decoration:none;font-size:13px;font-weight:600;
+  letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+  background:var(--gold);transition:width 0.2s}
+.nav-links a:hover::after{width:100%}
+.nav-links a:hover{color:var(--gold)}
+.nav-socials{display:flex;align-items:center;gap:10px}
+.nav-social-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(201,168,76,0.4);
+  display:flex;align-items:center;justify-content:center;color:var(--green);
+  text-decoration:none;transition:all 0.2s}
+.nav-social-btn:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-2px)}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1800&q=80');
+  background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,31,10,0.92) 0%,rgba(10,31,10,0.75) 60%,rgba(10,31,10,0.6) 100%)}
+.hero-content{position:relative;z-index:2;padding:140px 5% 100px;max-width:760px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(201,168,76,0.15);
+  border:1px solid rgba(201,168,76,0.4);padding:10px 20px;border-radius:40px;margin-bottom:36px}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-badge span{font-size:12px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:600}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,7vw,88px);font-weight:600;
+  color:#fff;line-height:1.0;letter-spacing:-1px;margin-bottom:28px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:18px;color:rgba(255,255,255,0.7);line-height:1.8;max-width:560px;margin-bottom:48px;font-weight:300}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:72px}
+.btn-gold{background:var(--gold);color:#000;padding:16px 32px;border-radius:var(--radius);
+  font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;
+  letter-spacing:0.5px;text-transform:uppercase}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.4)}
+.btn-outline{background:transparent;color:#fff;padding:16px 32px;border-radius:var(--radius);
+  font-size:14px;font-weight:600;text-decoration:none;border:2px solid rgba(255,255,255,0.35);
+  transition:all 0.2s;text-transform:uppercase;letter-spacing:0.5px}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:56px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.1)}
+.hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+.hero-stat-label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:1px;text-transform:uppercase}
+
+/* ─── SECTION BASE ─── */
+section{padding:100px 5%}
+.section-tag{display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:12px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.5vw,56px);
+  font-weight:600;line-height:1.05;letter-spacing:-0.5px;color:var(--text)}
+.section-title.light{color:#fff}
+.section-title-line{width:48px;height:3px;background:var(--gold);margin:16px 0 20px;border-radius:2px}
+.section-sub{font-size:16px;color:var(--gray);line-height:1.8;font-weight:300;max-width:580px}
+.section-sub.light{color:rgba(255,255,255,0.6)}
+.section-header-center{text-align:center}
+.section-header-center .section-title-line{margin:16px auto 20px}
+.section-header-center .section-sub{margin:0 auto}
+
+/* ─── DESTINATIONS ─── */
+.destinations-section{background:var(--off-white);padding:100px 5%}
+.dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.dest-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;
+  aspect-ratio:4/3;box-shadow:0 4px 20px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s}
+.dest-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.18)}
+.dest-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.dest-card:hover img{transform:scale(1.08)}
+.dest-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,10,0.9) 0%,rgba(10,31,10,0.2) 60%,transparent 100%)}
+.dest-info{position:absolute;bottom:0;left:0;right:0;padding:28px}
+.dest-flag{font-size:32px;margin-bottom:8px;display:block}
+.dest-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#fff;margin-bottom:6px}
+.dest-tag{display:inline-block;background:rgba(201,168,76,0.9);color:#000;font-size:11px;
+  font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase}
+.dest-hover-cta{font-size:13px;color:rgba(255,255,255,0.8);margin-top:8px;opacity:0;
+  transform:translateY(8px);transition:all 0.3s;font-weight:500}
+.dest-card:hover .dest-hover-cta{opacity:1;transform:translateY(0)}
+
+/* ─── DIRECTOR ─── */
+.director-section{background:var(--green);padding:100px 5%}
+.director-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto}
+.director-img-wrap{position:relative}
+.director-img-frame{position:absolute;top:24px;left:24px;right:-24px;bottom:-24px;
+  border:2px solid rgba(201,168,76,0.3);border-radius:var(--radius-lg)}
+.director-img{width:100%;border-radius:var(--radius-lg);position:relative;z-index:1;
+  object-fit:cover;aspect-ratio:3/4;display:block;filter:brightness(0.95)}
+.director-badge{position:absolute;bottom:28px;left:-20px;background:var(--gold);color:#000;
+  padding:12px 24px;border-radius:var(--radius);font-size:12px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;z-index:2;box-shadow:0 4px 16px rgba(201,168,76,0.4)}
+.director-role{font-size:12px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;
+  font-weight:600;margin-bottom:20px}
+.director-desc{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.9;font-weight:300;margin-bottom:36px}
+.director-values{display:flex;flex-direction:column;gap:20px}
+.director-value{display:flex;gap:16px;align-items:flex-start;padding:16px;
+  background:rgba(255,255,255,0.04);border-radius:var(--radius);border-left:3px solid var(--gold)}
+.director-value-icon{font-size:20px;flex-shrink:0}
+.director-value-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.director-value-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+
+/* ─── ABOUT ─── */
+.about-section{background:var(--green2);padding:100px 5%}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-desc{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.9;font-weight:300;margin:20px 0 36px}
+.about-features{display:flex;flex-direction:column;gap:0}
+.about-feat{display:flex;gap:16px;align-items:flex-start;padding:20px 0;
+  border-bottom:1px solid rgba(255,255,255,0.06)}
+.about-feat:last-child{border-bottom:none}
+.about-feat-icon{width:44px;height:44px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);
+  border-radius:var(--radius);display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0}
+.about-feat-title{font-size:15px;font-weight:600;color:#fff;margin-bottom:5px}
+.about-feat-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6}
+.about-quote-card{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.2);
+  border-radius:var(--radius-lg);padding:48px;position:relative;overflow:hidden}
+.about-quote-card::before{content:'"';position:absolute;top:-10px;left:24px;
+  font-family:'Cormorant Garamond',serif;font-size:140px;color:rgba(201,168,76,0.1);line-height:1}
+.about-quote{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;
+  color:#fff;line-height:1.6;position:relative;z-index:1;margin-bottom:24px}
+.about-quote-author{font-size:13px;color:var(--gold);font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.about-services-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.about-service-item{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  border-radius:var(--radius);padding:14px 16px;font-size:13px;color:rgba(255,255,255,0.7);
+  display:flex;align-items:center;gap:10px}
+.about-service-item::before{content:'✓';color:var(--gold);font-weight:700;font-size:13px;flex-shrink:0}
+
+/* ─── SERVICES ─── */
+.services-section{background:var(--white);padding:100px 5%}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.service-card{background:var(--white);border:1px solid var(--gray-light);border-radius:var(--radius-lg);
+  padding:40px 32px;position:relative;overflow:hidden;transition:all 0.3s;cursor:default}
+.service-card:hover{background:var(--green);border-color:var(--green);transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(10,31,10,0.2)}
+.service-card:hover .service-title{color:#fff}
+.service-card:hover .service-desc{color:rgba(255,255,255,0.55)}
+.service-card:hover .service-icon-wrap{background:rgba(201,168,76,0.15);border-color:rgba(201,168,76,0.3)}
+.service-num{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;
+  color:rgba(0,0,0,0.04);position:absolute;top:16px;right:20px;line-height:1;transition:color 0.3s}
+.service-card:hover .service-num{color:rgba(255,255,255,0.06)}
+.service-icon-wrap{width:52px;height:52px;border:1.5px solid var(--gray-light);border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:28px;transition:all 0.3s}
+.service-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;
+  color:var(--text);margin-bottom:14px;transition:color 0.3s;line-height:1.2}
+.service-desc{font-size:14px;color:var(--gray);line-height:1.7;font-weight:300;transition:color 0.3s}
+
+/* ─── PROCESS ─── */
+.process-section{background:var(--off-white);padding:100px 5%}
+.process-accordion{display:flex;flex-direction:column;gap:0;margin-top:56px;max-width:860px;margin-left:auto;margin-right:auto}
+.process-item{border-bottom:1px solid var(--gray-light);overflow:hidden}
+.process-item:first-child{border-top:1px solid var(--gray-light)}
+.process-trigger{display:flex;align-items:center;gap:24px;padding:28px 0;cursor:pointer;
+  background:none;border:none;width:100%;text-align:left;transition:all 0.2s}
+.process-trigger:hover .process-step-num{background:var(--gold);color:#000}
+.process-step-num{width:56px;height:56px;border-radius:50%;background:var(--white);
+  border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--gold);
+  flex-shrink:0;transition:all 0.3s}
+.process-item.open .process-step-num{background:var(--gold);color:#000}
+.process-step-info{flex:1}
+.process-step-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;
+  color:var(--text);margin-bottom:4px}
+.process-step-subtitle{font-size:13px;color:var(--gray)}
+.process-arrow{font-size:20px;color:var(--gold);transition:transform 0.3s;flex-shrink:0}
+.process-item.open .process-arrow{transform:rotate(180deg)}
+.process-content{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.process-item.open .process-content{max-height:400px}
+.process-body{padding:0 0 32px 80px}
+.process-body p{font-size:15px;color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:16px}
+.process-body ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.process-body ul li{display:flex;gap:10px;font-size:14px;color:var(--text);line-height:1.5}
+.process-body ul li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0}
+
+/* ─── DESTINATION DETAIL ─── */
+.dest-detail-section{background:var(--green);padding:100px 5%}
+.dest-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px;justify-content:center}
+.dest-tab{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.65);padding:10px 22px;border-radius:40px;font-size:13px;
+  font-weight:600;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px}
+.dest-tab.active,.dest-tab:hover{background:rgba(201,168,76,0.2);border-color:rgba(201,168,76,0.5);color:var(--gold)}
+.dest-detail-panel{display:none}
+.dest-detail-panel.active{display:block}
+.dest-detail-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.dest-hero-img{width:100%;border-radius:var(--radius-lg);object-fit:cover;height:340px}
+.dest-description{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.9;font-weight:300;margin-bottom:24px}
+.dest-highlights{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.dest-highlight{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);padding:14px 16px;font-size:13px;color:rgba(255,255,255,0.7);
+  display:flex;align-items:center;gap:10px}
+.dest-highlight::before{content:'✓';color:var(--gold);font-weight:700}
+.dest-programs-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;
+  color:#fff;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.dest-programs{list-style:none;display:flex;flex-direction:column;gap:10px}
+.dest-programs li{display:flex;gap:12px;align-items:flex-start;font-size:14px;
+  color:rgba(255,255,255,0.65);line-height:1.5}
+.dest-programs li span.badge{background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.3);
+  color:var(--gold);font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;
+  letter-spacing:0.5px;flex-shrink:0;margin-top:2px}
+.dest-procedure-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;
+  color:#fff;margin:28px 0 16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.dest-steps{list-style:none;display:flex;flex-direction:column;gap:12px}
+.dest-steps li{display:flex;gap:14px;align-items:flex-start;font-size:14px;
+  color:rgba(255,255,255,0.65);line-height:1.6}
+.dest-step-num-sm{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.15);
+  border:1px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:var(--gold);flex-shrink:0;margin-top:1px}
+.nb-notice{background:rgba(201,168,76,0.08);border-left:3px solid var(--gold);
+  border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;font-size:13px;
+  color:rgba(255,255,255,0.65);line-height:1.7;margin-top:20px}
+.nb-notice strong{color:var(--gold)}
+
+/* ─── DOCUMENTS ─── */
+.docs-section{background:var(--off-white);padding:100px 5%}
+.docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:56px}
+.docs-card{background:var(--white);border-radius:var(--radius-lg);padding:40px;
+  border:1px solid var(--gray-light);box-shadow:0 2px 16px rgba(0,0,0,0.04)}
+.docs-card-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;
+  color:var(--text);margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid rgba(201,168,76,0.3)}
+.docs-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.docs-list li{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--text);
+  padding:13px 0;border-bottom:1px solid rgba(0,0,0,0.05)}
+.docs-list li:last-child{border-bottom:none}
+.docs-check{width:22px;height:22px;border-radius:50%;background:rgba(201,168,76,0.12);
+  display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);
+  flex-shrink:0;font-weight:700;border:1px solid rgba(201,168,76,0.3)}
+.docs-note{background:rgba(201,168,76,0.08);border-left:3px solid var(--gold);
+  border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;font-size:13px;
+  color:var(--text);line-height:1.7;margin-top:24px}
+
+/* ─── CTA ─── */
+.cta-section{background:var(--green);text-align:center;position:relative;overflow:hidden;padding:100px 5%}
+.cta-section::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%)}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+
+/* ─── CONTACT ─── */
+.contact-section{background:var(--white);padding:100px 5%}
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:0}
+.contact-item{display:flex;gap:20px;align-items:flex-start;padding:24px 0;
+  border-bottom:1px solid var(--gray-light)}
+.contact-item:last-child{border-bottom:none}
+.contact-icon{width:50px;height:50px;background:rgba(201,168,76,0.08);border:1.5px solid rgba(201,168,76,0.25);
+  border-radius:var(--radius);display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;color:var(--gold)}
+.contact-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);
+  margin-bottom:5px;font-weight:600}
+.contact-val{font-size:16px;color:var(--text);font-weight:500}
+.contact-val a{color:inherit;text-decoration:none}
+.contact-val a:hover{color:var(--gold)}
+.contact-form{display:flex;flex-direction:column;gap:18px;background:var(--off-white);
+  padding:40px;border-radius:var(--radius-lg)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-group label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);font-weight:700}
+.form-group input,.form-group textarea,.form-group select{
+  border:1.5px solid var(--gray-light);border-radius:var(--radius);padding:14px 16px;
+  font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);background:#fff;
+  transition:border-color 0.2s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:120px}
+
+/* ─── FOOTER ─── */
+footer{background:var(--green3);border-top:1px solid rgba(255,255,255,0.06);padding:72px 5% 36px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.footer-brand-logo{margin-bottom:20px}
+.footer-brand-logo img{height:60px;width:auto;object-fit:contain;background:#fff;
+  padding:6px 14px;border-radius:8px}
+.footer-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.8;margin-bottom:28px}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:38px;height:38px;border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);
+  text-decoration:none;font-size:14px;transition:all 0.2s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col-title{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);
+  font-weight:700;margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:28px;
+  display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3)}
+.footer-slogan{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--gold);opacity:0.8}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  .nav-links{display:none}
+  .director-inner,.about-grid,.dest-detail-inner,.docs-grid,.contact-grid,.footer-grid{grid-template-columns:1fr}
+  .services-grid,.dest-grid{grid-template-columns:1fr 1fr}
+  .dest-highlights,.about-services-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  section,.destinations-section,.director-section,.about-section,.services-section,
+  .process-section,.dest-detail-section,.docs-section,.cta-section,.contact-section{padding:72px 5%}
+  .hero-stats{gap:28px;flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .dest-grid,.services-grid{grid-template-columns:1fr}
+  .hero h1{font-size:44px}
+  .dest-highlights{grid-template-columns:1fr}
+}
+</style>
+<style>
+.service-page-hero{background:#153315;margin-top:76px;padding:80px 5% 72px;position:relative;overflow:hidden}
+.service-page-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%)}
+.service-page-icon{font-size:64px;margin-bottom:24px;display:block}
+.service-page-tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:16px;display:block}
+.service-page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,72px);font-weight:600;color:#fff;line-height:1.05;margin-bottom:16px}
+.service-page-tagline{font-size:18px;color:rgba(255,255,255,0.6);font-weight:300;max-width:600px}
+.service-page-body{background:var(--green);padding:72px 5%}
+.service-page-intro{font-size:17px;color:rgba(255,255,255,0.75);line-height:1.9;font-weight:300;max-width:800px;margin:0 auto 56px;text-align:center}
+.service-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.service-detail-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:36px}
+.service-detail-card-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#fff;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid rgba(201,168,76,0.3)}
+.service-detail-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.service-detail-list li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6}
+.service-detail-list li::before{content:"→";color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
+.back-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);padding:10px 20px;border-radius:40px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;margin-bottom:48px}
+.back-btn:hover{background:rgba(201,168,76,0.15);border-color:var(--gold);color:var(--gold)}
+.cta-box{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:var(--radius-lg);padding:48px;text-align:center;max-width:700px;margin:56px auto 0}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:#fff;margin-bottom:12px}
+.cta-box p{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:28px;line-height:1.7}
+@media(max-width:900px){.service-detail-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="logo_0.jpg" alt="Agence Hadiza A. Internationale">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#documents">Documents</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-socials">
+    <a href="https://www.facebook.com/share/1BADqPDoKb/?mibextid=wwXIfr" target="_blank" class="nav-social-btn" title="Facebook" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/agencyhadiza.a?igsh=MTl3a3RkcmExa2RiNQ%3D%3D&utm_source=qr" target="_blank" class="nav-social-btn" title="Instagram" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="https://snapchat.com/t/4aReEja1" target="_blank" class="nav-social-btn" title="Snapchat" aria-label="Snapchat">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2.8 0-5 2.5-5 5.5V9c-.5.1-1 .3-1.3.6-.2.2-.2.5-.1.7.1.3.4.5.8.6-.3.5-.7.9-1.2 1.2-.2.1-.3.4-.2.7.3.5 1.1.8 2.4.9.3.5.9.8 1.7 1 .1 0 .2.1.2.2 0 .3-.6.5-1.3.7-.3.1-.4.3-.3.5.1.3.5.5.9.6.1 0 .1.1.2.2.1.2.1.4.3.5.3.2.8.2 1.2.1.4-.1.9-.2 1.4-.2s1 .1 1.4.2c.4.1.9.1 1.2-.1.2-.1.2-.3.3-.5.1-.1.1-.2.2-.2.4-.1.8-.3.9-.6.1-.2-.1-.4-.3-.5-.7-.2-1.3-.4-1.3-.7 0-.1.1-.2.2-.2.8-.2 1.4-.5 1.7-1 1.3-.1 2.1-.4 2.4-.9.1-.3 0-.6-.2-.7-.5-.3-.9-.7-1.2-1.2.4-.1.7-.3.8-.6.1-.2 0-.5-.1-.7-.3-.3-.8-.5-1.3-.6V7.5C17 4.5 14.8 2 12 2z"/></svg>
+    </a>
+  </div>
+</nav>
+
+<div class="service-page-hero">
+  <span class="service-page-icon">✈️</span>
+  <span class="service-page-tag">Our services</span>
+  <div class="service-page-title">Flight Tickets</div>
+  <div class="service-page-tagline">The best rates for your journey abroad</div>
+</div>
+
+<div class="service-page-body">
+  <a href="index.html#services" class="back-btn">← Back to all services</a>
+  <p class="service-page-intro">Once your visa is in hand, the next step is booking your flight. We help you find the best available rates, plan your travel dates around your university's start date, and ensure you arrive on time and well-prepared for your first days abroad.</p>
+  <div class="service-detail-grid">
+        <div class="service-detail-card">
+          <h3 class="service-detail-card-title">What we do for you</h3>
+          <ul class="service-detail-list"><li>Search for the best available flight rates from Niamey (NIM) or nearby airports</li><li>Coordination of travel dates with your university's enrollment deadlines</li><li>Advice on luggage allowances and what to bring</li><li>Booking confirmation and itinerary management</li><li>Connection with trusted travel agencies in Niamey</li><li>Rebooking support in case of visa delays or schedule changes</li></ul>
+        </div>
+        <div class="service-detail-card">
+          <h3 class="service-detail-card-title">Common routes we handle</h3>
+          <ul class="service-detail-list"><li>Niamey → Montreal / Toronto (via Paris, Casablanca, or Istanbul)</li><li>Niamey → Seattle / Washington DC (via Paris or Amsterdam)</li><li>Niamey → Kuala Lumpur (via Dubai, Doha, or Istanbul)</li><li>Niamey → Istanbul / Antalya (direct or via Casablanca)</li><li>Niamey → Tunis (via Casablanca or direct)</li><li>Niamey → New Delhi / Mumbai (via Addis Ababa or Dubai)</li><li>Niamey → Madrid / Brussels (via Paris or Casablanca)</li></ul>
+        </div>
+        <div class="service-detail-card">
+          <h3 class="service-detail-card-title">Tips for your flight</h3>
+          <ul class="service-detail-list"><li>Book your ticket only after your visa is confirmed</li><li>Arrive at least 3–5 days before classes begin to settle in</li><li>Keep all your documents in your carry-on luggage</li><li>Carry some local currency for your first days after arrival</li></ul>
+        </div></div>
+  <div class="cta-box">
+    <h3>Ready to get started?</h3>
+    <p>Contact us today for a free consultation. Our team will guide you through this service and answer all your questions.</p>
+    <a href="index.html#contact" class="btn-gold">Book a free consultation</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">
+        <img src="logo_0.jpg" alt="Agence Hadiza A. Internationale">
+      </div>
+      <p class="footer-desc">University placement agency specialized in guiding students from Niger and West Africa toward their study abroad dream. Founded in 2022 in Niamey, Niger.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/share/1BADqPDoKb/?mibextid=wwXIfr" target="_blank" title="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/agencyhadiza.a?igsh=MTl3a3RkcmExa2RiNQ%3D%3D&utm_source=qr" target="_blank" title="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://snapchat.com/t/4aReEja1" target="_blank" title="Snapchat">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2.8 0-5 2.5-5 5.5V9c-.5.1-1 .3-1.3.6-.2.2-.2.5-.1.7.1.3.4.5.8.6-.3.5-.7.9-1.2 1.2-.2.1-.3.4-.2.7.3.5 1.1.8 2.4.9.3.5.9.8 1.7 1 .1 0 .2.1.2.2 0 .3-.6.5-1.3.7-.3.1-.4.3-.3.5.1.3.5.5.9.6.1 0 .1.1.2.2.1.2.1.4.3.5.3.2.8.2 1.2.1.4-.1.9-.2 1.4-.2s1 .1 1.4.2c.4.1.9.1 1.2-.1.2-.1.2-.3.3-.5.1-.1.1-.2.2-.2.4-.1.8-.3.9-.6.1-.2-.1-.4-.3-.5-.7-.2-1.3-.4-1.3-.7 0-.1.1-.2.2-.2.8-.2 1.4-.5 1.7-1 1.3-.1 2.1-.4 2.4-.9.1-.3 0-.6-.2-.7-.5-.3-.9-.7-1.2-1.2.4-.1.7-.3.8-.6.1-.2 0-.5-.1-.7-.3-.3-.8-.5-1.3-.6V7.5C17 4.5 14.8 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Destinations</div>
+      <ul class="footer-links">
+        <li><a href="#">Canada</a></li>
+        <li><a href="#">United States</a></li>
+        <li><a href="#">Malaysia</a></li>
+        <li><a href="#">Turkey</a></li>
+        <li><a href="#">North Cyprus</a></li>
+        <li><a href="#">Spain · Belgium</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">University admission</a></li>
+        <li><a href="#">Consular procedures</a></li>
+        <li><a href="#">Flight tickets</a></li>
+        <li><a href="#">Housing</a></li>
+        <li><a href="#">Medical care</a></li>
+        <li><a href="#">Student follow-up</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:+22780868338">+227 80 86 83 38</a></li>
+        <li><a href="mailto:contacte@agencyhadiza.com">contacte@agencyhadiza.com</a></li>
+        <li><a href="#">Niamey, Sabon Gari</a></li>
+        <li><a href="#">@agencyhadiza</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Agence Hadiza A. Internationale — All rights reserved</div>
+    <div class="footer-slogan">Your passport to the world</div>
+  </div>
+</footer>
+<script>function showDest(){} function toggleProcess(){}</script>
+</body>
+</html>
+
